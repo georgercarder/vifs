@@ -11,6 +11,16 @@ opens in a vim terminal all desired files from path having results from a search
 vifs <search regexp> <include file regex>
 ```
 
+## example usages
+```
+vifs external *.sol
+
+```
+
+```
+vifs constant *.cpp
+```
+
 sure there are plugins that do this but this is just another simple/lightweight command line tool giving exactly what you want.
 
 under the hood it:
