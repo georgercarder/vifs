@@ -3,6 +3,12 @@
 pattern=$1
 includeFiles=$2
 
+if [ -z $pattern ];
+then
+  echo "usage: vifs <search regexp> <include file regex>"
+  exit 1
+fi
+
 delimiter=:
 
 declare -A fileHashmap
