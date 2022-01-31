@@ -14,9 +14,10 @@ vifs <search regexp> <search from path>
 sure there are plugins that do this but this is just another simple/lightweight command line tool giving exactly what you want.
 
 under the hood it:
-  does a recursive grep on the path
-  parses and collates the results into a string
-  feeds this to vim and priming the session to tabulate the search term
+
+-  does a recursive grep on the path
+-  parses and collates the results into a string
+-  feeds this to vim and priming the session to tabulate the search term
 
 so just tap the "n" key and enjoi
 
