@@ -21,4 +21,6 @@ under the hood it:
 
 so just tap the "n" key and enjoi
 
+### feedback is welcome in the git issues
+
 ### license gplv3 Copyright (c) 2021 George Carder georgercarder@gmail.com

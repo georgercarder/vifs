@@ -23,5 +23,3 @@ done
 )
 
 vim $fileList +"/$pattern"
-
-### feedback is welcome in the git issues
