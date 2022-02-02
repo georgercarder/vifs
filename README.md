@@ -8,7 +8,7 @@ opens in a vim terminal all desired files from path having results from a search
 ## usage
 
 ```
-vifs <search regexp> <include file regex>
+usage: vifs <search regexp> <include file regex (optional)>
 ```
 
 ## example usages
