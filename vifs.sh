@@ -3,7 +3,7 @@
 pattern=$1
 includeFiles=$2
 
-[ -z $pattern ] && echo "usage: vifs <search regexp> <include file regex>" && exit 1
+[ -z $pattern ] && echo "usage: vifs <search regexp> <include file regex (optional)>" && exit 1
 
 delimiter=:
 mainCommand="grep -rn $pattern"
