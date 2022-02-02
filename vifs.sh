@@ -3,26 +3,22 @@
 pattern=$1
 includeFiles=$2
 
-if [ -z $pattern ];
-then
-  echo "usage: vifs <search regexp> <include file regex>"
-  exit 1
-fi
+[ -z $pattern ] && echo "usage: vifs <search regexp> <include file regex>" && exit 1
 
 delimiter=:
+mainCommand="grep -rn $pattern"
+
+[ ! -z $includeFiles ] && mainCommand="$mainCommand --include=$includeFiles"
 
 declare -A fileHashmap
 
 fileList=$(
-grep -rn $pattern --include=$includeFiles | awk '{ print $1 }' | \
+$mainCommand | awk '{ print $1 }' | \
 while read line
 do
   IFS=':' read -ra ARRAY <<< "$line"
   filePath=${ARRAY[0]}
-  if [ "${fileHashmap[$filePath]}" == "1" ];
-  then
-    continue
-  fi
+  [ "${fileHashmap[$filePath]}" == "1" ] && continue
   fileHashmap[$filePath]=1
   echo $filePath
 done
