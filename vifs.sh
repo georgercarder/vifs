@@ -1,19 +1,20 @@
 #!/bin/sh
 
-pattern=$1
-includeFiles=$2
+pattern="$1"
+includeFiles="$2"
 
-[ -z $pattern ] && echo "usage: vifs <search regexp> <include file regex (optional)>" && exit 1
+[ -z "$pattern" ] && echo "usage: vifs <search regexp> <include file regex (optional)>" && exit 1
 
 delimiter=:
-mainCommand="grep -rn $pattern"
 
-[ ! -z $includeFiles ] && mainCommand="$mainCommand --include=$includeFiles"
+mainArgs=$pattern
+
+[ ! -z "$includeFiles" ] && mainArgs="'$mainArgs' --include=$includeFiles"
 
 declare -A fileHashmap
 
 fileList=$(
-$mainCommand | awk '{ print $1 }' | \
+echo $mainArgs | xargs grep -rn | awk '{ print $1 }' | \
 while read line
 do
   IFS=':' read -ra ARRAY <<< "$line"
@@ -24,4 +25,4 @@ do
 done
 )
 
-vim $fileList +"/$pattern"
+vim $fileList +`/$pattern`
