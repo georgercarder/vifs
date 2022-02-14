@@ -7,9 +7,11 @@ includeFiles="$2"
 
 delimiter=:
 
-mainArgs=$pattern
+mainArgs="'$pattern'"
 
-[ ! -z "$includeFiles" ] && mainArgs="'$mainArgs' --include=$includeFiles"
+[ ! -z "$includeFiles" ] && mainArgs="$mainArgs --include=$includeFiles"
+
+echo $mainArgs
 
 declare -A fileHashmap
 
@@ -25,4 +27,4 @@ do
 done
 )
 
-vim $fileList +`/$pattern`
+vim $fileList +/"$pattern"
